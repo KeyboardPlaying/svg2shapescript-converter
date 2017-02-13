@@ -4,74 +4,12 @@
     <meta charset="UTF-8">
     <title>SVG to ShareScript converter</title>
 
-    <script>
-        function handleFileSelect(evt) {
-            handleFiles(evt.target.files);
-        }
-
-        function handleFileDrop(evt) {
-            evt.stopPropagation();
-            evt.preventDefault();
-
-            handleFiles(evt.dataTransfer.files);
-        }
-
-        function handleFiles(files) {
-            // files is a FileList of File objects. List some properties.
-            var output = [];
-            for (var i = 0, f; f = files[i]; i++) {
-                output.push('<li><strong>', encodeURI(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                    f.size, ' bytes, last modified: ',
-                    f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                    '</li>');
-            }
-            document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-        }
-
-        function handleDragOver(evt) {
-            evt.stopPropagation();
-            evt.preventDefault();
-            evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
-        }
-
-        window.onload = function () {
-            // Check for the various File API support.
-            if (window.File && window.FileReader && window.FileList && window.Blob) {
-                var fileInput = document.getElementById('files'),
-                    dropZone = document.getElementById('drop-zone');
-
-                // Great success! All the File APIs are supported.
-                fileInput.addEventListener('change', handleFileSelect, false);
-                dropZone.addEventListener('click', function () {
-                    fileInput.click();
-                }, false);
-                dropZone.addEventListener('dragover', handleDragOver, false);
-                dropZone.addEventListener('drop', handleFileDrop, false);
-            } else {
-                alert('The File APIs are not fully supported in this browser.');
-            }
-        }
-    </script>
-
-    <style>
-        #files {
-            display: none;
-        }
-
-        #drop-zone {
-            border: 2px dashed #bbb;
-            border-radius: 5px;
-            padding: 25px;
-            text-align: center;
-            font: 20pt bold Helvetica, Arial, sans-serif;
-            color: #bbb;
-            cursor: pointer;
-        }
-    </style>
+    <link href="dist/svg2sharescript.css" rel="stylesheet"/>
 </head>
 <body>
 <div id="drop-zone">Drop files here</div>
 <input type="file" id="files" name="files[]" accept=".svg" multiple/>
 <output id="list"></output>
+<script src="dist/svg2sharescript.js" type="text/javascript"></script>
 </body>
 </html>

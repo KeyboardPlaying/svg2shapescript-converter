@@ -32,7 +32,7 @@ gulp.task('webserver-dev', function () {
     // Start the server
     new WebpackDevServer(webpack(cfg), {
         contentBase: '.',
-        publicPath: './dist',
+        publicPath: '/dist/',
         stats: {colors: true}
     }).listen(DEV_SERVER_PORT, DEV_SERVER_DOMAIN, function (err) {
         if (err) {
