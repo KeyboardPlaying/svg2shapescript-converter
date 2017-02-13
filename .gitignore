@@ -1,4 +1,9 @@
+# NPM
+/node_modules
+
+# Compiled
+/dist
+
 # IntelliJ IDEA
 /.idea
 /*.iml
-

@@ -1,0 +1,38 @@
+const webpack = require('webpack'),
+    path = require('path'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+module.exports = {
+    entry: {
+        svg2sharescript: path.join(__dirname, 'src/js/svg2sharescript.js')
+    },
+    output: {
+        path: path.join(__dirname, 'dist'),
+        filename: 'svg2sharescript.js'
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loaders: ['babel-loader']
+            },
+            {
+                test: /\.scss$/,
+                loader: ExtractTextPlugin.extract({
+                    fallbackLoader: 'style-loader',
+                    loader: 'css-loader!postcss-loader!sass-loader'
+                })
+            }
+        ]
+    },
+
+    resolve: {
+        modules: ['src', 'node_modules']
+    },
+
+    // Plugins
+    plugins: [
+        new ExtractTextPlugin('[name].css')
+    ]
+};

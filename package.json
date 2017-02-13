@@ -1,0 +1,49 @@
+{
+  "name": "svg2sharescript-converter",
+  "version": "1.0.0-SNAPSHOT",
+  "description": "An online tool to convert SVG files to Share Script objects",
+  "dependencies": {
+    "normalize.css": "5.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "6.7.2",
+    "babel-core": "6.22.1",
+    "babel-loader": "6.2.10",
+    "babel-preset-es2015": "6.22.0",
+    "css-loader": "0.26.1",
+    "extract-text-webpack-plugin": "2.0.0-beta.4",
+    "gulp": "3.9.1",
+    "gulp-rimraf": "0.2.1",
+    "node-sass": "4.5.0",
+    "postcss-loader": "1.3.0",
+    "sass-loader": "6.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "2.2.1",
+    "webpack-dev-server": "2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KeyboardPlaying/svg2sharescript-converter.git"
+  },
+  "author": "Yannick Kirschhoffer",
+  "contributors": [
+    {
+      "name": "Yannick Kirschhoffer"
+    },
+    {
+      "name": "Cyrille Chopelet",
+      "email": "cyrille.chopelet@mines-nancy.org"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KeyboardPlaying/svg2sharesdcript-converter/issues"
+  },
+  "files": [
+    "dist",
+    "src",
+    "test",
+    "LICENSE"
+  ],
+  "homepage": "https://keyboardplaying.github.io/svg2sharescript-converter"
+}
