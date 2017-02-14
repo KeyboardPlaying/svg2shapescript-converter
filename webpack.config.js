@@ -4,11 +4,11 @@ const webpack = require('webpack'),
 
 module.exports = {
     entry: {
-        svg2sharescript: path.join(__dirname, 'src/js/svg2sharescript.js')
+        svg2shapescript: path.join(__dirname, 'src/js/svg2shapescript.js')
     },
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'svg2sharescript.js'
+        filename: '[name].js'
     },
     module: {
         loaders: [

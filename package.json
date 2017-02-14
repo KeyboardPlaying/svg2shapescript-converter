@@ -1,7 +1,7 @@
 {
-  "name": "svg2sharescript-converter",
+  "name": "svg2shapescript-converter",
   "version": "1.0.0-SNAPSHOT",
-  "description": "An online tool to convert SVG files to Share Script objects",
+  "description": "An online tool to convert SVG files to Shape Script objects",
   "dependencies": {
     "normalize.css": "5.0.0"
   },
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KeyboardPlaying/svg2sharescript-converter.git"
+    "url": "git+https://github.com/KeyboardPlaying/svg2shapescript-converter.git"
   },
   "author": "Yannick Kirschhoffer",
   "contributors": [
@@ -37,7 +37,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/KeyboardPlaying/svg2sharesdcript-converter/issues"
+    "url": "https://github.com/KeyboardPlaying/svg2shapescript-converter/issues"
   },
   "files": [
     "dist",
@@ -45,5 +45,5 @@
     "test",
     "LICENSE"
   ],
-  "homepage": "https://keyboardplaying.github.io/svg2sharescript-converter"
+  "homepage": "https://keyboardplaying.github.io/svg2shapescript-converter"
 }

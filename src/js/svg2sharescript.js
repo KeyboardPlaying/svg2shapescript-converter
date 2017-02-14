@@ -1,6 +1,6 @@
 import {handleDragOver, handleFileSelect, handleFileDrop} from './file/upload-handler';
 // The styling
-import 'scss/svg2sharescript.scss';
+import 'scss/svg2shapescript.scss';
 
 window.onload = function () {
     // Check for the various File API support.
