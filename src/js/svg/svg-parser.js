@@ -1,18 +1,4 @@
-const generateScript = function (svgXml) {
-    let oParser = new DOMParser();
-    let svgDocument = oParser.parseFromString(svgXml, "text/xml");
-    window._svg = svgDocument;
-
-    let text = '';
-
-    let rects = svgDocument.getElementsByTagName('rect');
-
-    for (let rectIndex = 0; rectIndex < rects.length; rectIndex++) {
-        text += 'rect\n'
-    }
-
-    return text;
-};
+import {generateScript} from "../conversion/generate-shapescript";
 
 export const parseSvgFile = function (f) {
     let line = [
