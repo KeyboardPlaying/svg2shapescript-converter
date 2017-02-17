@@ -1,6 +1,7 @@
 /* === PLUGINS === */
 const gulp = require('gulp'),
     gutil = require('gulp-util'),
+    gmocha = require('gulp-mocha'),
     rimraf = require('gulp-rimraf'),
     webpack = require('webpack');
 
@@ -13,6 +14,8 @@ const DEV_SERVER_DOMAIN = 'localhost',
     DEV_SERVER_PORT = 8080;
 
 /* === TASKS === */
+gulp.task('default', ['build']);
+
 gulp.task('clean', function () {
     return gulp.src(['./dist'], {read: false})
         .pipe(rimraf());
@@ -28,7 +31,7 @@ gulp.task('build', ['clean'], function (callback) {
     });
 });
 
-gulp.task('webserver-dev', function () {
+gulp.task('serve', function () {
     // Start the server
     new WebpackDevServer(webpack(cfg), {
         contentBase: '.',
@@ -39,4 +42,9 @@ gulp.task('webserver-dev', function () {
             throw new gutil.PluginError('webpack-dev-server', err);
         }
     });
+});
+
+gulp.task('test', function () {
+    gulp.src('test/*.js', {read: false})
+        .pipe(gmocha({reporter: 'nyan'}))
 });
