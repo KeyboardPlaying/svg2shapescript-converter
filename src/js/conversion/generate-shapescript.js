@@ -3,6 +3,19 @@ const xml = require('./xml');
 const generateScript = function (svgXml) {
     let oParser = xml.parser();
     let svgDocument = oParser.parseFromString(svgXml, "text/xml");
+
+    let defsRemovalInProgress = true;
+
+    while (defsRemovalInProgress) {
+        let defsElement = svgDocument.getElementsByTagName('defs')[0];
+
+        if (defsElement) {
+            defsElement.parentNode.removeChild(defsElement);
+        } else {
+            defsRemovalInProgress = false;
+        }
+    }
+
     let rects = svgDocument.getElementsByTagName('rect');
 
     let text = 'shape main {\n';

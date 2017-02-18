@@ -12,10 +12,10 @@ describe('Shapescript', function () {
             return new xmldom.DOMParser();
         });
 
-        let svg = fs.readFileSync(__dirname + '/test-shapescript-rectangle.svg', {encoding: 'utf-8'});
+        let svg = fs.readFileSync(__dirname + '/test-shapescript-rectangle-v.svg', {encoding: 'utf-8'});
         let ss = svg2ss.generateScript(svg);
         // console.log(ss);
-        assert(ss.includes('Rectangle'));
+        assert.equal(ss.match(/Rectangle/g).length, 1);
     });
 });
 
