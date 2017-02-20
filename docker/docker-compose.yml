@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  web:
+    build:
+      context: web
+    ports:
+     - 8001:80
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "10"
+        max-file: "10"
+
