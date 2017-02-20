@@ -12,10 +12,11 @@ RUN npm install -g gulp
 EXPOSE 80
 
 WORKDIR /runtime
-
 RUN git clone https://github.com/KeyboardPlaying/svg2shapescript-converter.git svg2shapescript-converter
-RUN cd svg2shapescript-converter && npm install
-RUN cd svg2shapescript-converter && gulp
-RUN cd svg2shapescript-converter && cp -pr index.html dist /var/www/html/
 
-CMD cd svg2shapescript-converter && apachectl -DFOREGROUND
+WORKDIR /runtime/svg2shapescript-converter
+RUN npm install
+RUN gulp
+RUN cp -pr index.html dist /var/www/html/
+
+CMD apachectl -DFOREGROUND
