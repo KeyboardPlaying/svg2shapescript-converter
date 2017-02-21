@@ -1,10 +1,10 @@
-let svg2ss = require('../src/js/conversion/generate-shapescript');
-let assert = require('assert');
-let fs = require('fs');
-let xmldom = require('xmldom');
+import svg2ss from '../src/js/conversion/generate-shapescript';
+import assert from 'assert';
+import fs from 'fs';
+import xmldom from 'xmldom';
 
-let xml = require('../src/js/conversion/xml');
-let sinon = require('sinon');
+import xml from '../src/js/conversion/xml';
+import sinon from 'sinon';
 
 describe('Shapescript', function () {
     it('should generate a simple rectangle', function () {

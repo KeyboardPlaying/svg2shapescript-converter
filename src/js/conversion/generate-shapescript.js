@@ -1,6 +1,6 @@
-const xml = require('./xml');
+import xml from './xml';
 
-const generateScript = function (svgXml) {
+export const generateScript = function (svgXml) {
     let oParser = xml.parser();
     let svgDocument = oParser.parseFromString(svgXml, "text/xml");
 
@@ -32,8 +32,4 @@ const generateScript = function (svgXml) {
     text += '}\n';
 
     return text;
-};
-
-module.exports = {
-    generateScript: generateScript
 };

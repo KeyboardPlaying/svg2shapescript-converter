@@ -1,11 +1,11 @@
 import {parseSvgFile} from '../svg/svg-parser';
 
-let output = [];
+const output = [];
 
-let handleFiles = function (files) {
+const handleFiles = function (files) {
     // files is a FileList of File objects. List some properties.
-    for (let i = 0, f; f = files[i]; i++) {
-        output.push(parseSvgFile(f));
+    for (let i = 0; i < files.length; i++) {
+        output.push(parseSvgFile(files[i]));
     }
     document.getElementById('list').innerHTML = '<ul><li>' + output.join('</li><li>') + '</li></ul>';
 };

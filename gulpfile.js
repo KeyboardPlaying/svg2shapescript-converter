@@ -3,6 +3,7 @@ const gulp = require('gulp'),
     gutil = require('gulp-util'),
     gmocha = require('gulp-mocha'),
     rimraf = require('gulp-rimraf'),
+    eslint = require('gulp-eslint'),
     webpack = require('webpack');
 
 const WebpackDevServer = require('webpack-dev-server');
@@ -48,3 +49,12 @@ gulp.task('test', function () {
     gulp.src('test/*.js', {read: false})
         .pipe(gmocha({reporter: 'nyan'}))
 });
+
+gulp.task('lint', function () {
+    return gulp.src(['src/**/*.js', 'test/**/*.js'])
+        .pipe(eslint())
+        .pipe(eslint.format('stylish'))
+        .pipe(eslint.failAfterError());
+});
+
+gulp.task('ci', ['build', 'test', 'lint']);

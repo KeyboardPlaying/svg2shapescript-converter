@@ -3,6 +3,6 @@
  * @returns {DOMParser}
  */
 
-module.exports.parser = function () {
+export const parser = function () {
     return new DOMParser();
 };
