@@ -3,17 +3,12 @@ let assert = require('assert');
 let fs = require('fs');
 let xmldom = require('xmldom');
 
-let xml = require('../src/js/conversion/xml');
-let sinon = require('sinon');
-
 describe('Shapescript', function () {
     it('should generate a simple rectangle', function () {
-        sinon.stub(xml, 'parser', function () {
-            return new xmldom.DOMParser();
-        });
-
-        let svg = fs.readFileSync(__dirname + '/test-shapescript-rectangle-v.svg', {encoding: 'utf-8'});
-        let ss = svg2ss.generateScript(svg);
+        let parser = new xmldom.DOMParser();
+        let svgText = fs.readFileSync(__dirname + '/test-shapescript-rectangle-v.svg', {encoding: 'utf-8'});
+        let svgDocument = parser.parseFromString(svgText);
+        let ss = svg2ss.generateScript(svgDocument);
         // console.log(ss);
         assert.equal(ss.match(/Rectangle/g).length, 1);
     });

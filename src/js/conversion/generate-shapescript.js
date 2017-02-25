@@ -1,9 +1,4 @@
-const xml = require('./xml');
-
-const generateScript = function (svgXml) {
-    let oParser = xml.parser();
-    let svgDocument = oParser.parseFromString(svgXml, "text/xml");
-
+const generateScript = function (svgDocument) {
     let defsRemovalInProgress = true;
 
     while (defsRemovalInProgress) {
