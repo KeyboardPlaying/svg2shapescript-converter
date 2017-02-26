@@ -1,8 +1,12 @@
-let scaling = require('./scaling');
+const scaling = require('./scaling');
 
 const MIMETYPE_SVG = 'image/svg+xml';
 
-const generateScript = function (svgDocument) {
+const parseSvg = function (source) {
+    return new DOMParser().parseFromString(source, 'application/xml');
+};
+
+const generateShapeScript = function (svgDocument) {
     let defsRemovalInProgress = true;
 
     while (defsRemovalInProgress) {
@@ -53,6 +57,7 @@ const generateScript = function (svgDocument) {
 };
 
 module.exports = {
-    MIMETYPE_SVG: MIMETYPE_SVG,
-    generateScript: generateScript
+    MIMETYPE_SVG,
+    parseSvg,
+    generateShapeScript
 };

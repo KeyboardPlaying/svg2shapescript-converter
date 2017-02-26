@@ -8,7 +8,7 @@ describe('Shapescript', function () {
         let parser = new xmldom.DOMParser();
         let svgText = fs.readFileSync(__dirname + '/test-shapescript-rectangle-v.svg', {encoding: 'utf-8'});
         let svgDocument = parser.parseFromString(svgText);
-        let ss = svg2ss.generateScript(svgDocument);
+        let ss = svg2ss.generateShapeScript(svgDocument);
         console.log(ss);
         assert.equal(ss.match(/Rectangle\(/g).length, 1);
     });
