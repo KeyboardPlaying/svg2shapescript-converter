@@ -5,6 +5,11 @@
 
   padding: $converter-padding;
 
-  @import 'components/_upload-controls';
-  @import 'components/_upload-summary';
+  .align-center {
+    text-align: center;
+  }
+
+  @import 'components/upload-controls';
+  @import 'components/shapescript-conversion';
+  @import 'components/upload-summary';
 }

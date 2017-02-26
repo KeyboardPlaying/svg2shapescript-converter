@@ -3,6 +3,10 @@ import rivets from 'rivets';
 const EMPTY = '',
     FILE_SIZE_UNITS = ['B', 'kB', 'MB', 'GB', 'TB'];
 
+rivets.formatters.length = (object) => object ? object.length : 0;
+
+rivets.formatters.gt = (left, right) => left > right;
+
 rivets.formatters.toBoolean = (value) => Boolean(value);
 
 rivets.formatters.dateTime = (date) => date

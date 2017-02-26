@@ -31,6 +31,10 @@ class UiController {
     constructor(el) {
         this.div = el;
         this.files = [];
+        this.context = {
+            files: this.files,
+            shapeScript: ''
+        };
     }
 
     /**
@@ -40,7 +44,7 @@ class UiController {
         const uploadHandler = new UploadHandler(this.files, _callbackHandler);
 
         this.div.innerHTML = template;
-        rivets.bind(this.div, {files: this.files});
+        rivets.bind(this.div, this.context);
 
         uploadHandler.startListening(
             this.div.querySelector('input[name="files[]"]'),
@@ -51,6 +55,7 @@ class UiController {
 
     /**
      * Ensures the clicked thumbnail is one of a converted SVG and displays its converted source.
+     *
      * @param event the click event
      * @private
      */
@@ -65,8 +70,19 @@ class UiController {
         // Only if conversion was successful
         if (clickedThumbnail) {
             const file = this.files[clickedThumbnail.dataset.index];
-            alert(file.shapeScript);
+            this._displaySource(file)
         }
+    }
+
+    /**
+     * Displays the ShapeScript source of the selected file.
+     *
+     * @param file the file to display
+     * @private
+     */
+    _displaySource(file) {
+        // alert(file.shapeScript);
+        this.context.shapeScript = file.shapeScript;
     }
 }
 

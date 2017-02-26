@@ -2,6 +2,10 @@
 <input type="file" name="files[]" accept=".svg" multiple/>
 <output id="list"></output>
 
+<pre class="converted-source" rv-class-show="shapeScript | length | gt 0">{shapeScript}</pre>
+<div class="align-center" rv-if="files | length | gt 0">
+    <small>Click an image to display the source</small>
+</div>
 <ul class="uploaded">
     <li rv-each-file="files" rv-class-converted="file.shapeScript | toBoolean" rv-data-index="index">
         <div class="summary">

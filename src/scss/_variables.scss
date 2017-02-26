@@ -10,6 +10,11 @@ $drop-color: $border-color;
 $drop-border: 2px dashed $border-color;
 $drop-padding: 25px;
 
+// Converted
+$ss-border: 1px solid $border-color;
+$ss-background: transparentize($border-color, .5);
+$ss-padding: 5px 10px;
+
 // Uploaded list
 $thumb-border: 1px solid $border-color;
 $thumb-width: 18%;
