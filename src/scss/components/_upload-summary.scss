@@ -1,3 +1,67 @@
 ul.svg-uploaded {
 
+  * {
+    box-sizing: border-box;
+  }
+
+  list-style: none;
+  margin: {
+    left: -$thumb-margin;
+    right: -$thumb-margin;
+  }
+  padding: {
+    left: 0;
+    right: 0;
+  }
+
+  li {
+    position: relative;
+    display: inline-flex;
+
+    width: $thumb-width;
+    height: $thumb-height;
+    margin: $thumb-margin;
+    padding: $thumb-preview-padding;
+
+    border: $thumb-border;
+    border-radius: $border-radius;
+
+    .summary {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+
+      width: 100%;
+      height: $thumb-summary-height;
+      padding: $thumb-summary-padding;
+
+      background: transparentize(black, .5);
+      border-radius: {
+        bottom-left: $border-radius;
+        bottom-right: $border-radius;
+      }
+      color: white;
+
+      span {
+        display: block;
+      }
+
+      .name {
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .size, .last {
+        font-size: smaller;
+      }
+    }
+
+    img.preview {
+      flex: 1 1 0;
+      max-width: 100% - 2 * $thumb-preview-padding;
+      max-height: 100% - 2 * $thumb-preview-padding;
+    }
+  }
 }

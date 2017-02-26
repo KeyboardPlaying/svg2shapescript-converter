@@ -1,5 +1,20 @@
 $font-family: Helvetica, Arial, sans-serif;
 
-$body-padding: 20px;
+$converter-padding: 20px;
 
-$drop-color: #bbb;
+$border-color: #bbb;
+$border-radius: 5px;
+
+// Drop zone
+$drop-color: $border-color;
+$drop-border: 2px dashed $border-color;
+$drop-padding: 25px;
+
+// Uploaded list
+$thumb-border: 1px solid $border-color;
+$thumb-width: 18%;
+$thumb-height: 18vw;
+$thumb-margin: 1%;
+$thumb-preview-padding: 2%;
+$thumb-summary-height: 40%;
+$thumb-summary-padding: 4px;

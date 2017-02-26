@@ -4,7 +4,11 @@
 
 <ul class="svg-uploaded">
     <li rv-each-file="files">
-        <p>{file.name} - {file.size} - {file.lastModified | date}</p>
-        <img rv-src="file | toData"/>
+        <div class="summary">
+            <span class="name">{file.name}</span>
+            <span class="size">{file.size | fileSize}</span>
+            <span class="last">{file.lastModified | dateTime}</span>
+        </div>
+        <img rv-src="file | toData" class="preview"/>
     </li>
 </ul>

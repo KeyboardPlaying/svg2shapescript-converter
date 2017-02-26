@@ -3,7 +3,7 @@
 .svg2sharescript {
   @import '~normalize.css/normalize.css';
 
-  padding: $body-padding;
+  padding: $converter-padding;
 
   @import 'components/_upload-controls';
   @import 'components/_upload-summary';
