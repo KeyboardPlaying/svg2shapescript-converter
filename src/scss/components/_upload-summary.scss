@@ -1,4 +1,4 @@
-ul.svg-uploaded {
+ul.uploaded {
 
   * {
     box-sizing: border-box;
@@ -15,6 +15,13 @@ ul.svg-uploaded {
   }
 
   li {
+    &.converted {
+      cursor: pointer;
+      .summary {
+        background-color: transparentize($thumb-summary-color-success, $thumb-summary-color-transparency);
+      }
+    }
+
     position: relative;
     display: inline-flex;
 
@@ -35,11 +42,11 @@ ul.svg-uploaded {
       height: $thumb-summary-height;
       padding: $thumb-summary-padding;
 
-      background: transparentize(black, .5);
-      border-radius: {
-        bottom-left: $border-radius;
-        bottom-right: $border-radius;
-      }
+      background-color: transparentize($thumb-summary-color-fail, $thumb-summary-color-transparency);
+
+      border-bottom-left-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+
       color: white;
 
       span {

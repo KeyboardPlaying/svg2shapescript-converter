@@ -2,8 +2,8 @@
 <input type="file" name="files[]" accept=".svg" multiple/>
 <output id="list"></output>
 
-<ul class="svg-uploaded">
-    <li rv-each-file="files">
+<ul class="uploaded">
+    <li rv-each-file="files" rv-class-converted="file.shapeScript | toBoolean" rv-data-index="index">
         <div class="summary">
             <span class="name">{file.name}</span>
             <span class="size">{file.size | fileSize}</span>
