@@ -38,11 +38,25 @@ describe('Scaler', function () {
         assert.equal(scaler.scale_y(2), 0.75);
     });
 
-    it('should preserve aspect ratio', function () {
+    it('should preserve aspect ratio horizontally', function () {
         let scaler = new scaling.Scaler();
         scaler.register(0, 0);
         scaler.register(20, 10);
-        assert.equal(scaler.scale_x(10), 0.5);
-        // assert.equal(scaler.scale_y(10), 0.5);
+        assert.equal(scaler.scale_x(10), 0.50);
+        assert.equal(scaler.scale_y(10), 0.75);
+
+        assert.equal(scaler.scale_x(0), 0.00);
+        assert.equal(scaler.scale_y(0), 0.25);
+    });
+
+    it('should preserve aspect ratio vertically', function () {
+        let scaler = new scaling.Scaler();
+        scaler.register(0, 0);
+        scaler.register(10, 20);
+        assert.equal(scaler.scale_x(10), 0.75);
+        assert.equal(scaler.scale_y(10), 0.50);
+
+        assert.equal(scaler.scale_x(0), 0.25);
+        assert.equal(scaler.scale_y(0), 0.00);
     });
 });
