@@ -1,21 +1,10 @@
-@import '~normalize.css/normalize.css';
-
 @import 'variables';
 
-body {
+.svg2sharescript {
+  @import '~normalize.css/normalize.css';
+
   padding: $body-padding;
-}
 
-#files {
-  display: none;
-}
-
-#drop-zone {
-  border: 2px dashed $drop-color;
-  border-radius: 5px;
-  padding: 25px;
-  text-align: center;
-  font: 20pt bold $font-family;
-  color: $drop-color;
-  cursor: pointer;
+  @import 'components/_upload-controls';
+  @import 'components/_upload-summary';
 }

@@ -1,0 +1,13 @@
+input[name="files[]"] {
+  display: none;
+}
+
+div.drop-zone {
+  border: 2px dashed $drop-color;
+  border-radius: 5px;
+  padding: 25px;
+  text-align: center;
+  font: 20pt bold $font-family;
+  color: $drop-color;
+  cursor: pointer;
+}
