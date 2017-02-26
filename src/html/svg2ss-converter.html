@@ -2,6 +2,9 @@
 <input type="file" id="files" name="files[]" accept=".svg" multiple/>
 <output id="list"></output>
 
-<ul>
-    <li rv-each-file="files">{file.name} - {file.size} - {file.lastModified}</li>
+<ul class="svg-uploaded">
+    <li rv-each-file="files">
+        <p>{file.name} - {file.size} - {file.lastModified | date}</p>
+        <img rv-src="file | toData"/>
+    </li>
 </ul>

@@ -1,4 +1,4 @@
-class SvgUploadHandler {
+class UploadHandler {
     /**
      *Creates the handler.
      *
@@ -15,10 +15,10 @@ class SvgUploadHandler {
      * Reads a single file and parses it into an object.
      *
      * @param f the file being uploaded
+     * @param {Array} fileList the list of uploaded files
      * @param {function} uploadCallback the function to be called once the upload is finished
-     * @returns {{name: string, type: string, size: number, lastModified: string}}
      */
-    static readFile(f, uploadCallback) {
+    static readFile(f, fileList, uploadCallback) {
         const file = {
             name: encodeURI(f.name),
             type: f.type,
@@ -35,11 +35,11 @@ class SvgUploadHandler {
                 if (uploadCallback) {
                     uploadCallback.call(this, file);
                 }
+                fileList.push(file);
             };
         })(f);
 
         reader.readAsText(f);
-        return file;
     }
 
     /**
@@ -51,7 +51,7 @@ class SvgUploadHandler {
     handleFiles(uploaded) {
         // uploaded is a FileList of File objects. List some properties.
         for (let i = 0, f; f = uploaded[i]; i++) {
-            this.uploadedFiles.push(SvgUploadHandler.readFile(f, this.uploadCallback));
+            UploadHandler.readFile(f, this.uploadedFiles, this.uploadCallback);
         }
     }
 
@@ -108,4 +108,4 @@ class SvgUploadHandler {
     }
 }
 
-export default SvgUploadHandler;
+export default UploadHandler;

@@ -1,9 +1,9 @@
 // Rivets
-import rivets from 'rivets';
+import rivets from './lib/rivets';
 import template from '../html/svg2ss-converter.html';
 
 // The magic
-import SvgUploadHandler from './file/upload-handler';
+import UploadHandler from './file/upload-handler';
 import {MIMETYPE_SVG, generateScript} from './conversion/generate-shapescript';
 
 // The styling
@@ -17,7 +17,7 @@ const loadConverter = function (converterDiv) {
     };
 
     const files = [],
-        svgUploadHandler = new SvgUploadHandler(files, callbackHandler);
+        svgUploadHandler = new UploadHandler(files, callbackHandler);
 
     converterDiv.innerHTML = template;
     rivets.bind(converterDiv, {files});
@@ -42,4 +42,3 @@ window.onload = function () {
         converterDiv.innerText = 'The File APIs are not fully supported in this browser.';
     }
 };
-
