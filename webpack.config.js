@@ -23,6 +23,11 @@ module.exports = {
                     fallbackLoader: 'style-loader',
                     loader: 'css-loader!postcss-loader!sass-loader'
                 })
+            },
+            {
+                test: /\.html?$/,
+                exclude: /node_modules/,
+                loaders: ['html-loader']
             }
         ]
     },
