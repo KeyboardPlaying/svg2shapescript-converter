@@ -1,33 +1,45 @@
+// Rivets
 import rivets from 'rivets';
 import template from '../html/svg2ss-converter.html';
 
-import {handleDragOver, handleFileSelect, handleFileDrop} from './file/upload-handler';
+// The magic
+import SvgUploadHandler from './file/upload-handler';
+import {MIMETYPE_SVG, generateScript} from './conversion/generate-shapescript';
+
 // The styling
 import 'scss/svg2shapescript.scss';
+
+const loadConverter = function (converterDiv) {
+    const callbackHandler = function (file) {
+        if (file.type === MIMETYPE_SVG) {
+            file.shapeScript = generateScript(new DOMParser().parseFromString(file.content, 'application/xml'));
+        }
+    };
+
+    const files = [],
+        svgUploadHandler = new SvgUploadHandler(files, callbackHandler);
+
+    converterDiv.innerHTML = template;
+    rivets.bind(converterDiv, {files});
+
+    svgUploadHandler.startListening(
+        document.getElementById('files'),
+        document.getElementById('drop-zone'));
+};
 
 window.onload = function () {
     const converterDiv = document.getElementById('svg2ss-converter');
 
     // Check for the various File API support.
     if (window.File && window.FileReader && window.FileList && window.Blob) {
+
+        // Great success! All file APIs are supported.
         loadConverter(converterDiv);
+
     } else {
+
+        // We can't make it, sorry.
         converterDiv.innerText = 'The File APIs are not fully supported in this browser.';
     }
 };
 
-function loadConverter(converterDiv) {
-    converterDiv.innerHTML = template;
-    rivets.bind(converterDiv, {hello: 'world'});
-
-    const fileInput = document.getElementById('files'),
-        dropZone = document.getElementById('drop-zone');
-
-    // Great success! All the File APIs are supported.
-    fileInput.addEventListener('change', handleFileSelect, false);
-    dropZone.addEventListener('click', function () {
-        fileInput.click();
-    }, false);
-    dropZone.addEventListener('dragover', handleDragOver, false);
-    dropZone.addEventListener('drop', handleFileDrop, false);
-}

@@ -1,5 +1,7 @@
 let scaling = require('./scaling');
 
+const MIMETYPE_SVG = 'image/svg+xml';
+
 const generateScript = function (svgDocument) {
     let defsRemovalInProgress = true;
 
@@ -51,5 +53,6 @@ const generateScript = function (svgDocument) {
 };
 
 module.exports = {
+    MIMETYPE_SVG: MIMETYPE_SVG,
     generateScript: generateScript
 };
