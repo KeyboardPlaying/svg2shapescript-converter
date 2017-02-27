@@ -1,13 +1,11 @@
 // Rivets
-import rivets from '../lib/rivets';
-import template from '../../html/svg2ss-converter.html';
-
+import rivets from "../lib/rivets";
+import template from "../../html/svg2ss-converter.html";
 // The magic
-import UploadHandler from '../file/upload-handler';
-import {MIMETYPE_SVG, parseSvg, generateShapeScript} from '../conversion/generate-shapescript';
-
+import UploadHandler from "../file/upload-handler";
+import {MIMETYPE_SVG, parseSvg, generateShapeScript} from "../conversion/generate-shapescript";
 // Some utils
-import {collectionHas} from '../lib/utils';
+import {collectionHas} from "../lib/utils";
 
 /* This handler converts the SVG source into ShapeScript. */
 const _callbackHandler = function (file) {
@@ -83,6 +81,8 @@ class UiController {
     _displaySource(file) {
         // alert(file.shapeScript);
         this.context.shapeScript = file.shapeScript;
+        let code = document.querySelector('code');
+        hljs.highlightBlock(code);
     }
 }
 
