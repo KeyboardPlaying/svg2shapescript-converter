@@ -57,12 +57,8 @@
     <g id="id1" class="Slide" clip-path="url(#presentation_clip_path)">
      <g class="Page">
       <g class="com.sun.star.drawing.CustomShape">
-       <g id="id3">
-        <rect class="BoundingBox" stroke="none" fill="none" x="2904" y="3665" width="16260" height="10291"/>
-        <path fill="rgb(114,159,207)" stroke="none" d="M 11033,3666 C 15641,3666 19161,5893 19161,8809 19161,11725 15641,13953 11033,13953 6425,13953 2905,11725 2905,8809 2905,5893 6425,3666 11033,3666 Z M 2905,3666 L 2905,3666 Z M 19162,13954 L 19162,13954 Z"/>
-        <path fill="none" stroke="rgb(52,101,164)" d="M 11033,3666 C 15641,3666 19161,5893 19161,8809 19161,11725 15641,13953 11033,13953 6425,13953 2905,11725 2905,8809 2905,5893 6425,3666 11033,3666 Z"/>
-        <path fill="none" stroke="rgb(52,101,164)" d="M 2905,3666 L 2905,3666 Z"/>
-        <path fill="none" stroke="rgb(52,101,164)" d="M 19162,13954 L 19162,13954 Z"/>
+        <g id="id3">
+        <ellipse stroke="none" fill="rgb(114,159,207)" cx="4004" cy="5065" rx="2260" ry="1291"/>
        </g>
       </g>
      </g>

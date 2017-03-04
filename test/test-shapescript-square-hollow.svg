@@ -58,8 +58,7 @@
      <g class="Page">
       <g class="com.sun.star.drawing.CustomShape">
        <g id="id3">
-        <rect class="BoundingBox" stroke="none" fill="none" x="7381" y="9080" width="3003" height="3003"/>
-        <path fill="none" stroke="rgb(52,101,164)" d="M 8882,12081 L 7382,12081 7382,9081 10382,9081 10382,12081 8882,12081 Z"/>
+        <rect stroke="rgb(52,101,164)" fill="none" x="7381" y="9080" width="3003" height="3003"/>
        </g>
       </g>
      </g>
