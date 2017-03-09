@@ -109,7 +109,7 @@ const generateShapeScript = function (svgDocument) {
     let text = 'shape main {\n';
     text += '    h_align = "center";\n';
     text += '    v_align = "center";\n';
-    text += '    fixedAspectRatio = "true";\n';
+    text += '    fixedAspectRatio = "false";\n';
     text += '\n';
 
     instructions.forEach(function (inst) {

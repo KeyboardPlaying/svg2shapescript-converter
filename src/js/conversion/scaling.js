@@ -35,27 +35,27 @@ class Scaler {
     }
 
     get offset_x() {
-        return (1 - this.ratio_x) / 2;
+        return 100 * (1 - this.ratio_x) / 2;
     }
 
     get offset_y() {
-        return (1 - this.ratio_y) / 2;
+        return 100 * (1 - this.ratio_y) / 2;
     }
 
     scale_x(x) {
-        return Scaler.scale(this._min_x, x, this._max_x) * this.ratio_x + this.offset_x;
+        return 100 * Scaler.scale(this._min_x, x, this._max_x) * this.ratio_x + this.offset_x;
     }
 
     scale_y(y) {
-        return Scaler.scale(this._min_y, y, this._max_y) * this.ratio_y + this.offset_y;
+        return 100 * Scaler.scale(this._min_y, y, this._max_y) * this.ratio_y + this.offset_y;
     }
 
     scale_w(w) {
-        return Scaler.scale(0, w, this._max_x - this._min_x) * this.ratio_x + this.offset_x;
+        return 100 * Scaler.scale(0, w, this._max_x - this._min_x) * this.ratio_x + this.offset_x;
     }
 
     scale_h(h) {
-        return Scaler.scale(0, h, this._max_y - this._min_y) * this.ratio_y + this.offset_y;
+        return 100 * Scaler.scale(0, h, this._max_y - this._min_y) * this.ratio_y + this.offset_y;
     }
 
     static scale(min, value, max) {

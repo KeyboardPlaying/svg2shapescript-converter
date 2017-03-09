@@ -10,7 +10,7 @@ describe('Shapescript square parser', function () {
         let svgDocument = parser.parseFromString(svgText);
         let ss = svg2ss.generateShapeScript(svgDocument);
         // console.log(ss);
-        assert.equal(ss.match(/Rectangle\(0,0,1,1\)/g).length, 1);
+        assert.equal(ss.match(/Rectangle\(0,0,100,100\)/g).length, 1);
     });
 
     it('should generate a hollow square', function () {
@@ -19,7 +19,7 @@ describe('Shapescript square parser', function () {
         let svgDocument = parser.parseFromString(svgText);
         let ss = svg2ss.generateShapeScript(svgDocument);
         // console.log(ss);
-        assert.equal(ss.match(/Rectangle\(0,0,1,1\)/g).length, 1);
+        assert.equal(ss.match(/Rectangle\(0,0,100,100\)/g).length, 1);
     });
 
     it('should generate a thick square', function () {
@@ -28,7 +28,7 @@ describe('Shapescript square parser', function () {
         let svgDocument = parser.parseFromString(svgText);
         let ss = svg2ss.generateShapeScript(svgDocument);
         // console.log(ss);
-        assert.equal(ss.match(/Rectangle\(0,0,1,1\)/g).length, 1);
+        assert.equal(ss.match(/Rectangle\(0,0,100,100\)/g).length, 1);
     });
 });
 
