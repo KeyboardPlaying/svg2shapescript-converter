@@ -150,15 +150,11 @@ const generateShapeScript = function (svgDocument) {
     });
 
     text += `
-	shape namecompartment {
-		h_align = "center";
-		editablefield = "name";
-		println("#name#");
-		if(hasproperty("packagename","Applications")){
-		} else {
-			println("(#packagename#)");
-		}
-	}
+    	if(hasproperty("isinparent","true")) {
+    		println("#name#");
+	    } else {
+		    println("#packagename#::#name#");
+    	}
 	`;
 
     text += '}\n';
