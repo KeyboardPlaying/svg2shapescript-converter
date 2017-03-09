@@ -39,6 +39,15 @@ const parsePath = function (context) {
     }
 }
 
+const parsePenParameters = function(shapeElement, instructions) {
+    let strokeWidth = shapeElement.getAttribute('stroke-width');
+        
+    if ( strokeWidth ) {
+        let pw = 1 + Math.floor(strokeWidth/100);
+        instructions.push({fn: 'SetPenWidth', args: [pw]});
+    }
+}
+
 const generateShapeScript = function (svgDocument) {
     let defsRemovalInProgress = true;
 
@@ -59,13 +68,19 @@ const generateShapeScript = function (svgDocument) {
 
     for (let rectIndex = 0; rectIndex < rects.length; rectIndex++) {
         let rect = rects[rectIndex];
-        let x = Number(rect.getAttribute('x'));
-        let y = Number(rect.getAttribute('y'));
-        let w = Number(rect.getAttribute('width'));
-        let h = Number(rect.getAttribute('height'));
-        instructions.push({fn: 'Rectangle', args: [x, y, w, h]});
-        scaler.register(x, y);
-        scaler.register(x + w, y + h);
+        
+        if ( rect.getAttribute('class') != 'BoundingBox' ) {
+            let x = Number(rect.getAttribute('x'));
+            let y = Number(rect.getAttribute('y'));
+            let w = Number(rect.getAttribute('width'));
+            let h = Number(rect.getAttribute('height'));
+            
+            parsePenParameters(rect, instructions);
+            
+            instructions.push({fn: 'Rectangle', args: [x, y, w, h]});
+            scaler.register(x, y);
+            scaler.register(x + w, y + h);
+        }
     }
 
     let ellipses = svgDocument.getElementsByTagName('ellipse');
@@ -80,6 +95,9 @@ const generateShapeScript = function (svgDocument) {
         let y = cy - ry;
         let w = rx * 2;
         let h = ry * 2;
+        
+        parsePenParameters(ellipse, instructions);
+            
         instructions.push({fn: 'Ellipse', args: [x, y, w, h]});
         scaler.register(x, y);
         scaler.register(x + w, y + h);
@@ -91,7 +109,23 @@ const generateShapeScript = function (svgDocument) {
         let path = paths[pathIndex];
         let pathDescription = path.getAttribute('d');
         let tokens = pathDescription.match(/[\w\.]+/g);
+
+        parsePenParameters(path, instructions);
+
+        instructions.push({fn: 'StartPath', args: []});
         parsePath({tokens, instructions, scaler});
+        instructions.push({fn: 'EndPath', args: []});
+        
+        let stroke = path.getAttribute('stroke');
+        let fill = path.getAttribute('fill');
+        
+        if ( fill && fill != 'none' ) {
+            instructions.push({fn: 'FillPath', args: []});
+        }
+
+        if ( stroke && stroke != 'none' ) {
+            instructions.push({fn: 'StrokePath', args: []});
+        }
     }
 
     instructions.forEach(function (inst) {
@@ -100,7 +134,7 @@ const generateShapeScript = function (svgDocument) {
             inst.args[1] = scaler.scale_y(inst.args[1]);
             inst.args[2] = scaler.scale_w(inst.args[2]);
             inst.args[3] = scaler.scale_h(inst.args[3]);
-        } else {
+        } else if ( inst.args.length == 2 ) {
             inst.args[0] = scaler.scale_x(inst.args[0]);
             inst.args[1] = scaler.scale_y(inst.args[1]);
         }
@@ -109,12 +143,23 @@ const generateShapeScript = function (svgDocument) {
     let text = 'shape main {\n';
     text += '    h_align = "center";\n';
     text += '    v_align = "center";\n';
-    text += '    fixedAspectRatio = "false";\n';
     text += '\n';
 
     instructions.forEach(function (inst) {
         text += `    ${inst.fn}(${inst.args.join(',')});\n`
     });
+
+    text += `
+	shape namecompartment {
+		h_align = "center";
+		editablefield = "name";
+		println("#name#");
+		if(hasproperty("packagename","Applications")){
+		} else {
+			println("(#packagename#)");
+		}
+	}
+	`;
 
     text += '}\n';
 

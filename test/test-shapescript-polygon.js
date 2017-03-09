@@ -10,8 +10,13 @@ describe('Shapescript polygon parser', function () {
         let svgDocument = parser.parseFromString(svgText);
         let ss = svg2ss.generateShapeScript(svgDocument);
         // console.log(ss);
+        assert.equal(ss.match(/Rectangle\(/g), null);
+        assert.equal(ss.match(/StartPath\(/g).length, 2);
+        assert.equal(ss.match(/EndPath\(/g).length, 2);
         assert.equal(ss.match(/MoveTo\(/g).length, 2);
         assert.equal(ss.match(/LineTo\(/g).length, 10);
+        assert.equal(ss.match(/FillPath\(/g).length, 1);
+        assert.equal(ss.match(/StrokePath\(/g).length, 1);
     });
 });
 

@@ -28,6 +28,7 @@ describe('Shapescript square parser', function () {
         let svgDocument = parser.parseFromString(svgText);
         let ss = svg2ss.generateShapeScript(svgDocument);
         // console.log(ss);
+        assert.equal(ss.match(/SetPenWidth\(2\)/g).length, 1); 
         assert.equal(ss.match(/Rectangle\(0,0,100,100\)/g).length, 1);
     });
 });
